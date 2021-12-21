@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: first-service
+  cloud:
+    config:
+#      enabled: true
+#      uri: http://localhost:8088
+      password: root
+      username: root
+  config:
+    import: "configserver:http://localhost:8088"
+#    import: "optional:configserver:http://root:s3cr3t@localhost:8088"
