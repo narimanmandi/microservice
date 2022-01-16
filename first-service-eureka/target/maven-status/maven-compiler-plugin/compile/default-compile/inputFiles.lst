@@ -1,2 +1,4 @@
 /Users/nariman/Documents/Idea projects/Microservices-nariman/first-service-eureka/src/main/java/com/javainuse/controller/FirstController.java
 /Users/nariman/Documents/Idea projects/Microservices-nariman/first-service-eureka/src/main/java/com/javainuse/FirstApplication.java
+/Users/nariman/Documents/Idea projects/Microservices-nariman/first-service-eureka/src/main/java/com/javainuse/config/RealmRoleConverter.java
+/Users/nariman/Documents/Idea projects/Microservices-nariman/first-service-eureka/src/main/java/com/javainuse/config/SecurityConfig.java

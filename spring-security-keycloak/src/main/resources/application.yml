@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: key-cloak
+keycloak:
+  url: http://localhost:8180/auth
+  realm: SpringBootSecurityKeycloak
+  username: admin
+  password: admin
+  clientId: admin-cli
+server:
+  port: 8888
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8083/eureka

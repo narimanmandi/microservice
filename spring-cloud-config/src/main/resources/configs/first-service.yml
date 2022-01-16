@@ -4,3 +4,28 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8083/eureka
+
+spring:
+  security:
+    oauth2:
+#      client:
+#        provider:
+#          my-keycloak-provider:
+#            issuer-uri: http://localhost:8180/auth/realms/SpringBootSecurityKeycloak
+#
+#        registration:
+#          keycloak-spring-gateway-client:
+#            provider: my-keycloak-provider
+#            client-id: first-service
+#            client-secret: 1w1vHOARsXzpgpWaGih9uIoJwiSRlsuc
+#            authorization-grant-type: authorization_code
+#            scope: openid,profile,email
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8180/auth/realms/SpringBootSecurityKeycloak/protocol/openid-connect/certs
+
+
+logging.level:
+  org.springframework.cloud.gateway: DEBUG
+  org.springframework.security: DEBUG
+  org.springframework.web.reactive.function.client: TRACE

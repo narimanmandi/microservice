@@ -1,6 +1,6 @@
 server:
   port: 8080
- 
+
 eureka:
   client:
     serviceUrl:
@@ -11,12 +11,40 @@ spring:
     name: gateway-service
   cloud:
     gateway:
+      default-filters:
+        - TokenRelay
       routes:
       - id: employeeModule
-        uri: lb://FIRST-SERVICE
+#        uri: lb://FIRST-SERVICE
+        uri: lb://first-service
         predicates:
         - Path=/employee/**
       - id: consumerModule
         uri: lb://SECOND-SERVICE
         predicates:
         - Path=/consumer/**
+
+  security:
+    oauth2:
+      client:
+        provider:
+          my-keycloak-provider:
+              issuer-uri: http://localhost:8180/auth/realms/SpringBootSecurityKeycloak
+        registration:
+          keycloak-spring-gateway-client:
+            provider: my-keycloak-provider
+            client-id: login-app
+            client-secret: SCll8AMjimQJgGtgZNBZP6SJl33iAffV
+            authorization-grant-type: authorization_code
+#            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak-spring-gateway-client"
+            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+#            scope: openid,profile,email
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8180/auth/realms/SpringBootSecurityKeycloak/protocol/openid-connect/certs
+
+
+logging.level:
+  org.springframework.cloud.gateway: DEBUG
+  org.springframework.security: DEBUG
+  org.springframework.web.reactive.function.client: TRACE
